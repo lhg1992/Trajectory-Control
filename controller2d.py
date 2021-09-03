@@ -203,9 +203,7 @@ class Controller2D(object):
 
             throttle_output = acc
             # throttle smoother
-            if acc > 0:
-                # throttle_output = (np.tanh(acc) + 1)/2                
-                # throttle_output = max(0.0, min(1.0, throttle_output))
+            if throttle_output > 0:
                 if throttle_output - self.vars.throttle_previous > 2*st:
                     throttle_output = self.vars.throttle_previous + 2*st
                 if throttle_output - self.vars.throttle_previous < -10*st:
@@ -300,53 +298,7 @@ class Controller2D(object):
             if steer_output - self.vars.steer_previous > np.pi/2 *st:
                 steer_output = self.vars.steer_previous + np.pi/2 *st
             if steer_output - self.vars.steer_previous < -np.pi/2 *st:
-                steer_output = self.vars.steer_previous -np.pi/2 *st
-            
-         ##------------------------------------------------------------   
-            # slope = (waypoints[-1][1]-waypoints[0][1])/ (waypoints[-1][0]-waypoints[0][0])
-            # a = -slope
-            # b = 1.0
-            # c = (slope*waypoints[0][0]) - waypoints[0][1]
-
-            # # heading error
-            # # yaw_path = np.arctan2(y2-y1, x2-x1)
-            # yaw_path = np.arctan2(waypoints[-1][1]-waypoints[0][1], waypoints[-1][0]-waypoints[0][0])
-            # # yaw_path = np.arctan2(slope, 1.0)  # This was turning the vehicle only to the right (some error)
-            # yaw_diff_heading = yaw_path - yaw 
-            # if yaw_diff_heading > np.pi:
-            #     yaw_diff_heading -= 2 * np.pi
-            # if yaw_diff_heading < - np.pi:
-            #     yaw_diff_heading += 2 * np.pi
-
-            # # crosstrack error
-            # current_xy = np.array([x, y])
-            # crosstrack_error_0 = (a*x + b*y + c) / np.linalg.norm([a,b]) #swings a lot,
-            # crosstrack_error = np.min(np.sum((current_xy - np.array(waypoints)[:, :2])**2, axis=1)) #k_e=0.3
-            # if self._current_frame%20 == 0:
-            #     print(self._current_frame, self._current_timestamp, crosstrack_error_0, crosstrack_error)
-            # yaw_cross_track = np.arctan2(y-waypoints[0][1], x-waypoints[0][0])
-            # yaw_path2ct = yaw_path - yaw_cross_track
-            # if yaw_path2ct > np.pi:
-            #     yaw_path2ct -= 2 * np.pi
-            # if yaw_path2ct < - np.pi:
-            #     yaw_path2ct += 2 * np.pi
-            # if yaw_path2ct > 0:
-            #     crosstrack_error = abs(crosstrack_error)
-            # else:
-            #     crosstrack_error = - abs(crosstrack_error)
-            # yaw_diff_crosstrack = np.arctan(k_e * crosstrack_error / (v))
-
-            # # final expected steering
-            # steer_expect = yaw_diff_crosstrack + yaw_diff_heading
-            # if steer_expect > np.pi:
-            #     steer_expect -= 2 * np.pi
-            # if steer_expect < - np.pi:
-            #     steer_expect += 2 * np.pi
-            # steer_expect = min(1.22, steer_expect)
-            # steer_expect = max(-1.22, steer_expect)
-
-            # # update
-            # steer_output = steer_expect
+                steer_output = self.vars.steer_previous -np.pi/2 *st         
 
             #------------------- My Code End ------------------#
 
