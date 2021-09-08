@@ -1,4 +1,4 @@
-# Trajectory-Control
+# Trajectory Control
 
 Here I provide a simple but highly accurate trajectory(lateral) control method for self-driving cars. The simulation is based on the CarlaSimulator /Game/Maps/RaceTrack, where you can follow the Coursera's Self-driving Specialization course-1 [final project](https://www.coursera.org/learn/intro-self-driving-cars/programming/ac8R5/final-project-self-driving-vehicle-control) to setup.
 
