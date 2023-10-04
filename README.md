@@ -11,5 +11,5 @@ Zoom in 400% for the details in the turns/arcs:
 
 **The core idea is the dynamic lookahead length based on a lookahead time(around 0.5s) and current velocity for the "next waypoint", rather than a fixed lookahead length.** Then use the Stanley method as the course suggests. The pursuit method should also work.
 
-As for the longitudinal control, it's just a simple PID controller as the course suggests, additionally I defined a simple smoother for throttle control for comfort consideration. Therefore it doesn't follow the desired/reference velocity so well at the velocity spikes, as shown below, orange line is the desired velocity:
+As for the longitudinal control, it's just a simple PID controller as the course suggests, additionally I defined a simple smoother for throttle control for comfort consideration. Therefore it doesn't follow the desired/reference velocity so well at the velocity spikes, as shown below, blue line is the desired velocity:
 ![image](https://user-images.githubusercontent.com/29236300/132018623-ecd4181a-9357-4cf3-8c91-ff161873b6f2.png)
